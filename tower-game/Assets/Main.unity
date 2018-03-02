@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 122679418}
   - component: {fileID: 122679417}
   - component: {fileID: 122679420}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tilemap_Rock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -900,6 +900,10 @@ Prefab:
     - target: {fileID: 4550962196574822, guid: 02a5844494b1d4967ba3b729f4c9a5c1, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435322661623392, guid: 02a5844494b1d4967ba3b729f4c9a5c1, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02a5844494b1d4967ba3b729f4c9a5c1, type: 2}
