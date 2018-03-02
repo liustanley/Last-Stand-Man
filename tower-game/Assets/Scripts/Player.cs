@@ -6,17 +6,16 @@ using UnityEngine.UI;
 //Player inherits from MovingObject, our base class for objects that can move, Enemy also inherits from this.
 public class Player : MonoBehaviour
 {
-	public float moveTime = 0.1f;
+	public float speed;
+	public float moveTime;
 	public LayerMask blockingLayer;
 
-	private BoxCollider2D boxCollider;
 	private Rigidbody2D rb2D;
 	private float inverseMoveTime;
 
 	// Use this for initialization
 	void Start()
 	{
-		boxCollider = GetComponent<BoxCollider2D> ();
 		rb2D = GetComponent<Rigidbody2D> ();
 		inverseMoveTime = 1f / moveTime;
 	}
