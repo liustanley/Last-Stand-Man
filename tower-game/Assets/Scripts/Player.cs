@@ -13,11 +13,24 @@ public class Player : MonoBehaviour
 	private Rigidbody2D rb2D;
 	private float inverseMoveTime;
 
+	bool facingRight = true;
+	Transform playerGraphics; // Reference to the graphics so we can change direction
+
+	void Awake()
+	{
+		playerGraphics = transform.FindChild ("Graphics");
+		if (playerGraphics == null)
+		{
+			Debug.LogError ("There is no Graphics object as a child of the player");
+		}
+	}
+
 	// Use this for initialization
 	void Start()
 	{
 		rb2D = GetComponent<Rigidbody2D> ();
 		inverseMoveTime = 1f / moveTime;
+
 	}
 
 	private void Update ()
@@ -42,6 +55,10 @@ public class Player : MonoBehaviour
 		if(horizontal != 0 || vertical != 0)
 		{
 			Move (horizontal,vertical);
+			if (horizontal < 0 && facingRight)
+				Flip ();
+			else if (horizontal > 0 && !facingRight)
+				Flip ();
 		}
 	}
 
@@ -67,4 +84,12 @@ public class Player : MonoBehaviour
 		}
 	}
 
-}
+	void Flip()
+	{
+		facingRight = !facingRight;
+
+		Vector3 theScale = playerGraphics.localScale;
+		theScale.x *= -1;
+		playerGraphics.localScale = theScale;
+	}
+} 
