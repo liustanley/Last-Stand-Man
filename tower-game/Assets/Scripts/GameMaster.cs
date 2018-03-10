@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour {
 
+<<<<<<< HEAD
 	public Transform Enemy;
 	public GameObject spPoints;
 	private SpawnPoints spScript;
@@ -11,6 +12,9 @@ public class GameMaster : MonoBehaviour {
 	public float timeToSpawn = 10;
 
 	public static void KillPlayer (Player player) {
+=======
+	public void KillPlayer (Player player) {
+>>>>>>> master
 		Destroy (player.gameObject);
 	}
 
