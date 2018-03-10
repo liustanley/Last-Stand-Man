@@ -6,6 +6,19 @@ using UnityEngine.UI;
 //Player inherits from MovingObject, our base class for objects that can move, Enemy also inherits from this.
 public class Player : MonoBehaviour
 {
+	public class PlayerStats {
+		public int Health = 100;
+	}
+
+	public PlayerStats playerStats = new PlayerStats();
+
+	public void DamagePlayer (int damage) {
+		playerStats.Health -= damage;
+		if (playerStats.Health <= 0) {
+			Debug.Log ("KILL PLAYER");
+		}
+	}
+
 	public float speed;
 	public float moveTime;
 	public LayerMask blockingLayer;
@@ -30,7 +43,6 @@ public class Player : MonoBehaviour
 	{
 		rb2D = GetComponent<Rigidbody2D> ();
 		inverseMoveTime = 1f / moveTime;
-
 	}
 
 	private void Update ()
