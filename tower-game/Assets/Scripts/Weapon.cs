@@ -55,8 +55,8 @@ public class Weapon : MonoBehaviour {
 	}
 
 	void Effect() {
-		Instantiate (BulletTrailPrefab, firePoint.position, firePoint.rotation);
-		Transform clone = Instantiate (MuzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
+		Instantiate (BulletTrailPrefab, firePoint.position + new Vector3(0,0,-2f), firePoint.rotation);
+		Transform clone = Instantiate (MuzzleFlashPrefab, firePoint.position + new Vector3(0,0,-2f), firePoint.rotation) as Transform;
 		clone.parent = firePoint;
 		float size = Random.Range (1.3f, 1.6f);
 		clone.localScale = new Vector3 (size, size, size);
