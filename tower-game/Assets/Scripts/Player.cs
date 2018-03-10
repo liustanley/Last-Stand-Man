@@ -47,6 +47,12 @@ public class Player : MonoBehaviour
 
 	private void Update ()
 	{
+		if (PauseMenuManager.gameIsPaused) {
+			//Anything that would happen when the game is paused
+			//if code should not run while game is paused, include the following:
+			return;
+		}
+
 		int horizontal = 0;     //Used to store the horizontal move direction.
 		int vertical = 0;       //Used to store the vertical move direction.
 

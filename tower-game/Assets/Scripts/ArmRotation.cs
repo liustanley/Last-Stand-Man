@@ -8,6 +8,12 @@ public class ArmRotation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (PauseMenuManager.gameIsPaused) {
+			//Anything that would happen when the game is paused
+			//if code should not run while game is paused, include the following:
+			return;
+		}
+
 		Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;  // subtracting the position of the player from the mouse position
 		difference.Normalize ();  // normalizing the vector. Meaning that all the sum of the vector will be equal to 1.
 

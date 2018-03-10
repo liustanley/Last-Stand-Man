@@ -25,6 +25,12 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (PauseMenuManager.gameIsPaused) {
+			//Anything that would happen when the game is paused
+			//if code should not run while game is paused, include the following:
+			return;
+		}
+
 		move ();
 		checkHealth ();
 	}

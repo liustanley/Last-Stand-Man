@@ -23,6 +23,12 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	void Update () {
+		if (PauseMenuManager.gameIsPaused) {
+			//anything that would happen when game is paused
+			//if it does nothing:
+			return ;
+
+		}
 		
 	}
 

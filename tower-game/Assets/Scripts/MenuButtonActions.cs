@@ -34,7 +34,9 @@ public class MenuButtonActions : MonoBehaviour {
 
 	private IEnumerator ChangeScene(string SceneName, float waitTime)
 	{
+		
 		yield return new WaitForSeconds (waitTime);
+		PauseMenuManager.gameIsPaused = false;
 		SceneManager.LoadScene (SceneName);
 	}
 
@@ -55,6 +57,7 @@ public class MenuButtonActions : MonoBehaviour {
 	private IEnumerator quitAfterTime(float waitTime)
 	{
 		yield return new WaitForSeconds (waitTime);
+		PauseMenuManager.gameIsPaused = false;
 		Application.Quit ();
 		Debug.Log ("quit Game");
 	}

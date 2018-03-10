@@ -26,6 +26,12 @@ public class Weapon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (PauseMenuManager.gameIsPaused) {
+			//Anything that would happen when the game is paused
+			//if code should not run while game is paused, include the following:
+			return;
+		}
+
 		//Shoot ();
 		if (fireRate == 0) {
 			if (Input.GetButtonDown("Fire1")) {
