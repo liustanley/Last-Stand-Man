@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour {
 	public float speed = 1;
 	private Vector2 end;
 
+	public int health = 30;
+
 
 	// Use this for initialization
 	void Start () {
@@ -24,7 +26,18 @@ public class Enemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		move ();
+		checkHealth ();
+	}
 
+	void checkHealth () {
+		if (health <= 0)
+			Destroy (gameObject);
+	}
+
+	void HitByRay () {
+		Debug.Log ("I was hit by a Ray");
+		health -= 10;
+		Debug.Log (health);
 	}
 
 	Vector2 closestTarget () { // returns index of closest target
