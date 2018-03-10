@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
 	private EnemyTargetPoints epScript;
 
 	public Transform enemyTarget;
-	public float speed = 5;
+	public float speed = 1;
 	private Vector2 end;
 
 
@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour {
 		Vector2 start = transform.position;
 		Vector2 direction = end - start;
 		direction.Normalize ();
-		Vector2 movement = (direction * speed * Time.deltaTime);
+		Vector2 movement = (direction * speed / 10 * Time.deltaTime);
 		Vector3 newPosition = new Vector3 (transform.position.x + movement.x, transform.position.y + movement.y);
 		transform.position = newPosition;
 
