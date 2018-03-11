@@ -8,8 +8,14 @@ public class Player : MonoBehaviour
 {
 	public int health = 100;
 	public SpriteRenderer HealthBarFill;
+	public AudioClip[] playerHurt;
 
 	public void DamagePlayer (int damage) {
+
+		int i = Random.Range (0, playerHurt.Length);
+		GetComponent<AudioSource> ().clip = playerHurt [i];
+		GetComponent<AudioSource> ().Play ();
+
 		health -= damage;
 		//Debug.Log (health + " health remaining");
 		if (health <= 0) {

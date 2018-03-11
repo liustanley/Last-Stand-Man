@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour {
 
 	public float fireRate = 0;
 	public float Damage = 10;
+
 	public LayerMask whatToHit;
 
 	public Transform BulletTrailPrefab;
@@ -51,6 +52,7 @@ public class Weapon : MonoBehaviour {
 		if (Input.GetKey(KeyCode.R)) {
 			bullets = magazineSize;
 			Debug.Log("Reloaded");
+			GetComponent<AudioSource> ().Play ();
 		}
 
 	}
@@ -59,6 +61,7 @@ public class Weapon : MonoBehaviour {
 		if (bullets == 0) {
 			Debug.Log ("No more bullets. Press R to reload");
 		} else {
+
 			bullets--;
 			Vector2 mousePosition = new Vector2 (Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 			Vector2 firePointPosition = new Vector2 (firePoint.position.x, firePoint.position.y);
