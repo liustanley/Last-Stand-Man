@@ -180,13 +180,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gm: {fileID: 0}
   epPoints: {fileID: 0}
+  playerObject: {fileID: 0}
   enemyTarget: {fileID: 0}
   speed: 20
   attackSpeed: 0.5
+  nextAttack: 0
   health: 30
+  isAttacking: 0
   noises:
   - {fileID: 8300000, guid: 60d0eef236bc3474b9c008e0a6fb91c8, type: 3}
   - {fileID: 8300000, guid: 6db281fde44644e1f87983a9857b2175, type: 3}
+  anim: {fileID: 0}
 --- !u!212 &212845131602127652
 SpriteRenderer:
   m_ObjectHideFlags: 1

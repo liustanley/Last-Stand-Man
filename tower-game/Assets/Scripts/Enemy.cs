@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+abstract public class Enemy : MonoBehaviour {
 
 	public GameMaster gm;
 	public GameObject epPoints;
 	private EnemyTargetPoints epScript;
-	private Player playerObject;
+	public Player playerObject;
 
 	public Transform enemyTarget;
 	public float speed = 20;
-	public float attackSpeed = 0.5f;
-	private float nextAttack = 0;
+	public float attackSpeed = 50;
+	public float nextAttack = 0;
 	private Vector2 end;
 
 	public int health = 30;
 
-	private bool isAttacking = false;
+	public bool isAttacking = false;
 
 	public AudioClip[] noises;
 
@@ -40,22 +40,10 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (PauseMenuManager.gameIsPaused) {
-			//Anything that would happen when the game is paused
-			//if code should not run while game is paused, include the following:
-			return;
-		}
-
-		if (!isAttacking)
-			move ();
-		else
-			attack ();
-
-	}
 
 
-	void checkHealth () {
+
+	public void checkHealth () {
 		if (health <= 0) {
 			Destroy (gameObject);
 			gm.addKill ();
@@ -63,19 +51,9 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	void attack () {
-		if (Time.time > nextAttack) {
-			nextAttack = Time.time + attackSpeed;
-			playerObject.DamagePlayer (10);
-		}
-	}
+	public abstract void attack ();
 
-	void HitByRay () {
-		Debug.Log ("I was hit by a Ray");
-		health -= 10;
-		Debug.Log (health);
-		checkHealth ();
-	}
+	public abstract void HitByRay ();
 
 	Vector2 closestTarget () { // returns index of closest target
 		Transform[] targetPoints = epScript.targetPoints;
@@ -93,7 +71,7 @@ public class Enemy : MonoBehaviour {
 		return result;
 	}
 
-	void move () {
+	public void move () {
 		Vector2 start = transform.position;
 		Vector2 direction = end - start;
 

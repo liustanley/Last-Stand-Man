@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
 	public GameObject gameOverText;
 
+	public bool gameOver = false;
+
 	public void DamagePlayer (int damage) {
 
 		int i = Random.Range (0, playerHurt.Length);
@@ -23,6 +25,7 @@ public class Player : MonoBehaviour
 		if (health <= 0) {
 			gameOverText.SetActive (true);
 			gameObject.SetActive (false);
+			gameOver = true;
 		}
 	}
 

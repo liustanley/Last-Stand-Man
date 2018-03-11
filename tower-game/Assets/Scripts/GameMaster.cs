@@ -7,6 +7,8 @@ public class GameMaster : MonoBehaviour {
 
 	public GameObject Zombie;
 	public GameObject Spoder;
+	public GameObject player;
+	private Player pScript;
 	public GameObject spPoints;
 	private SpawnPoints spScript;
 
@@ -21,6 +23,7 @@ public class GameMaster : MonoBehaviour {
 	private int enemyCount;
 
 	void Start () {
+		pScript = player.GetComponent<Player> ();
 		spScript = spPoints.GetComponent<SpawnPoints> ();
 		setupLevel (level);
 	}
@@ -58,21 +61,30 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	public static void KillPlayer (Player player) {
-		Destroy (player.gameObject);
+		//Destroy (player.gameObject);
+
 	}
 
 	IEnumerator spawnEnemy (int count) {
+		
 		for (int i = 0; i < count; i++) {
-			Transform sp = spScript.spawnPoints[Random.Range(0,spScript.spawnPoints.Length-1)];
-			if (Random.Range(0,2) == 0)
-				Instantiate(Zombie, sp.position, sp.rotation);
-			else
-				Instantiate(Spoder, sp.position, sp.rotation);
-			
-			Debug.Log ("Spawned enemy");
-			yield return new WaitForSeconds(timeToSpawn + Random.Range(-0.5f,0.5f) - (level/5));
+			if (pScript.gameOver) {
+				
+			} else {
+				Transform sp = spScript.spawnPoints[Random.Range(0,spScript.spawnPoints.Length-1)];
+				if (Random.Range(1,2) != 0)
+					Instantiate(Zombie, sp.position, sp.rotation);
+				else
+					Instantiate(Spoder, sp.position, sp.rotation);
 
-		}
+				Debug.Log ("Spawned enemy");
+				yield return new WaitForSeconds(timeToSpawn + Random.Range(-0.5f,0.5f) - (level/5));
+			}
+
+			}
 
 	}
+
+
+
 }
