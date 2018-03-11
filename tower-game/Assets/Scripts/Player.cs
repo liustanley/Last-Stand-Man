@@ -27,6 +27,10 @@ public class Player : MonoBehaviour
 	bool facingRight = true;
 	Transform playerGraphics; // Reference to the graphics so we can change direction
 
+	public GameObject playerArm;
+	private ArmRotation armScript;
+	public Transform firePoint;
+
 	void Awake()
 	{
 		playerGraphics = transform.FindChild ("Graphics");
@@ -41,6 +45,7 @@ public class Player : MonoBehaviour
 	{
 		rb2D = GetComponent<Rigidbody2D> ();
 		inverseMoveTime = 1f / moveTime;
+		armScript = playerArm.GetComponent<ArmRotation> ();
 	}
 
 	private void Update ()
@@ -71,10 +76,14 @@ public class Player : MonoBehaviour
 		if(horizontal != 0 || vertical != 0)
 		{
 			Move (horizontal,vertical);
-			if (horizontal < 0 && facingRight)
-				Flip ();
-			else if (horizontal > 0 && !facingRight)
-				Flip ();
+			if (horizontal < 0 && facingRight) {
+				//Flip ();
+//				armScript.rotationOffset += 180;
+			}
+			else if (horizontal > 0 && !facingRight){
+				//Flip ();
+//				armScript.rotationOffset -= 180;
+			}
 		}
 	}
 
@@ -107,5 +116,9 @@ public class Player : MonoBehaviour
 		Vector3 theScale = playerGraphics.localScale;
 		theScale.x *= -1;
 		playerGraphics.localScale = theScale;
+
+		theScale = firePoint.localScale;
+		theScale.x *= -1;
+		firePoint.localScale = theScale;
 	}
 } 

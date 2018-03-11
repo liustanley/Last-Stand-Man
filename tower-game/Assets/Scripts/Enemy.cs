@@ -53,7 +53,6 @@ public class Enemy : MonoBehaviour {
 		if (Time.time > nextAttack) {
 			nextAttack = Time.time + attackSpeed;
 			playerObject.DamagePlayer (10);
-
 		}
 	}
 
