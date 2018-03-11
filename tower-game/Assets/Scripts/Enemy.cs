@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+	public GameMaster gm;
 	public GameObject epPoints;
 	private EnemyTargetPoints epScript;
 	private Player playerObject;
 
 	public Transform enemyTarget;
-	public float speed = 1;
+	public float speed = 20;
+	public float attackSpeed = 0.5f;
+	private float nextAttack = 0;
 	private Vector2 end;
 
 	public int health = 30;
@@ -19,6 +22,7 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gm = GameObject.Find ("GM").GetComponent<GameMaster>();
 		epPoints = GameObject.Find ("Enemy Target Points");
 		epScript = epPoints.GetComponent<EnemyTargetPoints> ();
 		playerObject = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
@@ -43,12 +47,18 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void checkHealth () {
-		if (health <= 0)
+		if (health <= 0) {
 			Destroy (gameObject);
+			gm.addKill ();
+			Debug.Log ("added kill");
+		}
 	}
 
 	void attack () {
-		playerObject.DamagePlayer (10);
+		if (Time.time > nextAttack) {
+			nextAttack = Time.time + attackSpeed;
+			playerObject.DamagePlayer (10);
+		}
 	}
 
 	void HitByRay () {
