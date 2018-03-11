@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour {
 
 	public Transform enemyTarget;
 	public float speed = 20;
-	public float attackSpeed = 0.5;
+	public float attackSpeed = 0.5f;
 	private float nextAttack = 0;
 	private Vector2 end;
 
