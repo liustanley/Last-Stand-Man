@@ -9,7 +9,9 @@ public class Enemy : MonoBehaviour {
 	private Player playerObject;
 
 	public Transform enemyTarget;
-	public float speed = 1;
+	public float speed = 20;
+	public float attackSpeed = 0.5;
+	private float nextAttack = 0;
 	private Vector2 end;
 
 	public int health = 30;
@@ -48,7 +50,11 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void attack () {
-		playerObject.DamagePlayer (10);
+		if (Time.time > nextAttack) {
+			nextAttack = Time.time + attackSpeed;
+			playerObject.DamagePlayer (10);
+
+		}
 	}
 
 	void HitByRay () {
