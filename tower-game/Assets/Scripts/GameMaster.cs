@@ -57,31 +57,33 @@ public class GameMaster : MonoBehaviour {
 	private void setupLevel (int level)
 	{
 		enemyCount = (int)(Mathf.Log (level, 2f) * difficulty);
-		StartCoroutine( spawnEnemy (enemyCount) );
+		StartCoroutine (spawnEnemy (enemyCount));
 	}
 
-	public static void KillPlayer (Player player) {
+	public static void KillPlayer (Player player)
+	{
 		//Destroy (player.gameObject);
 
 	}
 
-	IEnumerator spawnEnemy (int count) {
+	IEnumerator spawnEnemy (int count)
+	{
 		
 		for (int i = 0; i < count; i++) {
 			if (pScript.gameOver) {
 				
 			} else {
-				Transform sp = spScript.spawnPoints[Random.Range(0,spScript.spawnPoints.Length-1)];
-				if (Random.Range(1,2) != 0)
-					Instantiate(Zombie, sp.position, sp.rotation);
+				Transform sp = spScript.spawnPoints [Random.Range (0, spScript.spawnPoints.Length - 1)];
+				if (Random.Range (0, 2) == 0)
+					Instantiate (Zombie, sp.position, sp.rotation);
 				else
-					Instantiate(Spoder, sp.position, sp.rotation);
+					Instantiate (Spoder, sp.position, sp.rotation);
 
 				Debug.Log ("Spawned enemy");
-				yield return new WaitForSeconds(timeToSpawn + Random.Range(-0.5f,0.5f) - (level/5));
+				yield return new WaitForSeconds (timeToSpawn + Random.Range (-0.5f, 0.5f) - (level / 5));
 			}
 
-			}
+		}
 
 	}
 
