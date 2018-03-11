@@ -6,16 +6,14 @@ using UnityEngine.UI;
 //Player inherits from MovingObject, our base class for objects that can move, Enemy also inherits from this.
 public class Player : MonoBehaviour
 {
-	public class PlayerStats {
-		public int Health = 100;
-	}
-
-	public PlayerStats playerStats = new PlayerStats();
+	public int health = 100;
 
 	public void DamagePlayer (int damage) {
-		playerStats.Health -= damage;
-		if (playerStats.Health <= 0) {
+		health -= damage;
+		//Debug.Log (health + " health remaining");
+		if (health <= 0) {
 			Debug.Log ("KILL PLAYER");
+			//Destroy (gameObject);
 		}
 	}
 

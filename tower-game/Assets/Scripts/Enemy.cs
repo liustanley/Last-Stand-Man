@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour {
 
 	public GameObject epPoints;
 	private EnemyTargetPoints epScript;
+	private Player playerObject;
 
 	public Transform enemyTarget;
 	public float speed = 1;
@@ -13,11 +14,14 @@ public class Enemy : MonoBehaviour {
 
 	public int health = 30;
 
+	private bool isAttacking = false;
+
 
 	// Use this for initialization
 	void Start () {
 		epPoints = GameObject.Find ("Enemy Target Points");
 		epScript = epPoints.GetComponent<EnemyTargetPoints> ();
+		playerObject = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
 
 		Vector2 start = transform.position;
 		end = closestTarget ();
@@ -31,8 +35,11 @@ public class Enemy : MonoBehaviour {
 			return;
 		}
 
-		move ();
-		checkHealth ();
+		if (!isAttacking)
+			move ();
+		else
+			attack ();
+
 	}
 
 	void checkHealth () {
@@ -40,10 +47,15 @@ public class Enemy : MonoBehaviour {
 			Destroy (gameObject);
 	}
 
+	void attack () {
+		playerObject.DamagePlayer (10);
+	}
+
 	void HitByRay () {
 		Debug.Log ("I was hit by a Ray");
 		health -= 10;
 		Debug.Log (health);
+		checkHealth ();
 	}
 
 	Vector2 closestTarget () { // returns index of closest target
@@ -65,10 +77,14 @@ public class Enemy : MonoBehaviour {
 	void move () {
 		Vector2 start = transform.position;
 		Vector2 direction = end - start;
+
 		direction.Normalize ();
 		Vector2 movement = (direction * speed / 10 * Time.deltaTime);
 		Vector3 newPosition = new Vector3 (transform.position.x + movement.x, transform.position.y + movement.y);
 		transform.position = newPosition;
+
+		if (Mathf.Abs (end.x - transform.position.x) < 0.1 && Mathf.Abs(end.y - transform.position.y) < 0.1)
+			isAttacking = true;
 
 	}
 }

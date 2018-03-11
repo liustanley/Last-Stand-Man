@@ -6332,6 +6332,11 @@ Prefab:
       propertyPath: rotationOffset
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 108860626331011898, guid: c48e5584e842f472c8411eb12fe32b0b,
+        type: 2}
+      propertyPath: m_Intensity
+      value: 60
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c48e5584e842f472c8411eb12fe32b0b, type: 2}
   m_IsPrefabParent: 0
