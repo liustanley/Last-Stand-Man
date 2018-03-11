@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 	public SpriteRenderer HealthBarFill;
 	public AudioClip[] playerHurt;
 
+	public GameObject gameOverText;
+
 	public void DamagePlayer (int damage) {
 
 		int i = Random.Range (0, playerHurt.Length);
@@ -19,8 +21,8 @@ public class Player : MonoBehaviour
 		health -= damage;
 		//Debug.Log (health + " health remaining");
 		if (health <= 0) {
-			Debug.Log ("KILL PLAYER");
-			//Destroy (gameObject);
+			gameOverText.SetActive (true);
+			gameObject.SetActive (false);
 		}
 	}
 
