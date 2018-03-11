@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 	public int health = 100;
+	public SpriteRenderer HealthBarFill;
 
 	public void DamagePlayer (int damage) {
 		health -= damage;
@@ -14,6 +15,14 @@ public class Player : MonoBehaviour
 		if (health <= 0) {
 			Debug.Log ("KILL PLAYER");
 			//Destroy (gameObject);
+		}
+	}
+
+	public void showHealth()
+	{
+		HealthBarFill.size = new Vector2 ((2.0f * health) / 100f, 0.1f);
+		if (health <= 0) {
+			HealthBarFill.size = new Vector2 (0, 0.1f);
 		}
 	}
 
@@ -50,6 +59,8 @@ public class Player : MonoBehaviour
 
 	private void Update ()
 	{
+		showHealth ();
+
 		if (PauseMenuManager.gameIsPaused) {
 			//Anything that would happen when the game is paused
 			//if code should not run while game is paused, include the following:
@@ -75,7 +86,7 @@ public class Player : MonoBehaviour
 		//Check if we have a non-zero value for horizontal or vertical
 		if(horizontal != 0 || vertical != 0)
 		{
-			Move (horizontal,vertical);
+//			Move (horizontal,vertical);
 			if (horizontal < 0 && facingRight) {
 				//Flip ();
 //				armScript.rotationOffset += 180;

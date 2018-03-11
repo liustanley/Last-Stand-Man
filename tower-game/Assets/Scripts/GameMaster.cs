@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour {
 
 	public Transform Enemy;
 	public GameObject spPoints;
 	private SpawnPoints spScript;
+
+	public Text levelText;
 
 	public float timeToSpawn = .1f;
 	private float nextSpawn = 0;
@@ -22,6 +25,8 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	void Update () {
+		levelText.text = "Level: "+(level - 1);
+
 		if (PauseMenuManager.gameIsPaused) {
 			//anything that would happen when game is paused
 			//if it does nothing:
