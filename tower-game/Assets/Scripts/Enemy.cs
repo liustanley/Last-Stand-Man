@@ -19,9 +19,17 @@ public class Enemy : MonoBehaviour {
 
 	private bool isAttacking = false;
 
+	public AudioClip[] noises;
+
 
 	// Use this for initialization
 	void Start () {
+		int i = Random.Range (0, noises.Length);
+		GetComponent<AudioSource> ().clip = noises [i];
+		GetComponent<AudioSource> ().Play ();
+
+		StartCoroutine (tryToMakeNoise ());
+
 		gm = GameObject.Find ("GM").GetComponent<GameMaster>();
 		epPoints = GameObject.Find ("Enemy Target Points");
 		epScript = epPoints.GetComponent<EnemyTargetPoints> ();
@@ -97,5 +105,18 @@ public class Enemy : MonoBehaviour {
 		if (Mathf.Abs (end.x - transform.position.x) < 0.1 && Mathf.Abs(end.y - transform.position.y) < 0.1)
 			isAttacking = true;
 
+	}
+
+	IEnumerator tryToMakeNoise()
+	{
+		yield return new WaitForSeconds (5.0f);
+		int chance = Random.Range (1, 100);
+		if (chance > 80) {
+			int i = Random.Range (0, noises.Length);
+			GetComponent<AudioSource> ().clip = noises [i];
+			GetComponent<AudioSource> ().Play ();
+		}
+
+		StartCoroutine (tryToMakeNoise ());
 	}
 }

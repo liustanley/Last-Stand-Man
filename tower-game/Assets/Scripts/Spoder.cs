@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spoder : Enemy {
 
+
 	// Use this for initialization
 	void Awake () {
 		health = 30;
