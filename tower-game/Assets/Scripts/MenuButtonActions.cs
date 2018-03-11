@@ -2,11 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class MenuButtonActions : MonoBehaviour {
 
 	public GameObject mainMenu;
 	public GameObject optionsMenu;
+
+	public AudioMixer mixer;
+
+	void Start()
+	{
+		//Set settings to desired player value
+
+		mixer.SetFloat ("volume", PlayerPrefs.GetFloat("Volume"));
+		QualitySettings.SetQualityLevel (PlayerPrefs.GetInt("QualityIndex")); 
+
+		if (PlayerPrefs.GetInt ("Fullscreen") == 1) {
+			Screen.fullScreen = true;
+		} 
+		else {
+			Screen.fullScreen = false;
+		}
+
+	}
 
 
 	public void LoadSceneButton(string name)
@@ -29,7 +48,34 @@ public class MenuButtonActions : MonoBehaviour {
 		StartCoroutine (quitAfterTime (waitTime));
 	}
 
+	public void SetVolume(float volume)
+	{
+		PlayerPrefs.SetFloat ("Volume", volume);
+		mixer.SetFloat ("volume", PlayerPrefs.GetFloat("Volume"));
+	}
 
+	public void SetQuality(int index)
+	{
+		PlayerPrefs.SetInt ("QualityIndex", index);
+		QualitySettings.SetQualityLevel (PlayerPrefs.GetInt("QualityIndex")); 
+	}
+
+	public void SetFullscreen(bool fs)
+	{
+		if (fs) {
+			PlayerPrefs.SetInt ("Fullscreen", 1);
+		} 
+		else {
+			PlayerPrefs.SetInt ("Fullscreen", 0);
+		}
+
+		if (PlayerPrefs.GetInt ("Fullscreen") == 1) {
+			Screen.fullScreen = true;
+		} 
+		else {
+			Screen.fullScreen = false;
+		}
+	}
 
 
 	private IEnumerator ChangeScene(string SceneName, float waitTime)
