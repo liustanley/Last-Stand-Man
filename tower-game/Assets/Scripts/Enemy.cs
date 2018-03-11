@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour {
 
 	}
 
+
 	void checkHealth () {
 		if (health <= 0) {
 			Destroy (gameObject);

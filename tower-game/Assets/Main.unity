@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -2248,7 +2248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &948930807
 Transform:
   m_ObjectHideFlags: 0
@@ -6638,7 +6638,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1540928236540226, guid: 65b720fd0215449adbbff6a4cdcdfdd0, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1846196997110934, guid: 65b720fd0215449adbbff6a4cdcdfdd0, type: 2}
       propertyPath: m_IsActive
@@ -6902,7 +6902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b45be28d1adb47f7bd89d723552a982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 4271943281750670, guid: 6e6cf81acbcba4f6d9de89371694a599, type: 2}
+  Zombie: {fileID: 1785771396083696, guid: 200b476cbcf364ab19bdaa1140839154, type: 2}
+  Spoder: {fileID: 1457523615985786, guid: f514b7e39a69043d1bd14f66b0e03503, type: 2}
   spPoints: {fileID: 1589943151}
   levelText: {fileID: 1193317506}
   timeToSpawn: 10

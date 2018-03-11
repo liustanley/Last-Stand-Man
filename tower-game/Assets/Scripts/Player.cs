@@ -98,6 +98,12 @@ public class Player : MonoBehaviour
 		}
 	}
 
+	private void checkMouse () {
+		Vector3 mousePos = Input.mousePosition;
+
+
+	}
+
 	public void Move (int xDir, int yDir)
 	{
 		Vector2 start = transform.position;
