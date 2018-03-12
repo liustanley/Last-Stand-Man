@@ -37,6 +37,7 @@ abstract public class Enemy : MonoBehaviour {
 
 		Vector2 start = transform.position;
 		end = closestTarget ();
+
 	}
 	
 	// Update is called once per frame
@@ -96,5 +97,11 @@ abstract public class Enemy : MonoBehaviour {
 		}
 
 		StartCoroutine (tryToMakeNoise ());
+	}
+
+	public void Flip()
+	{
+		SpriteRenderer sr = GetComponent<SpriteRenderer> ();
+		sr.flipX = true;
 	}
 }

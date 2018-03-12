@@ -12,6 +12,7 @@ public class Spoder : Enemy {
 		speed = 50;
 
 		anim = GetComponent<Animator> ();
+
 	}
 
 	void Update () {
@@ -25,6 +26,11 @@ public class Spoder : Enemy {
 			move ();
 		else
 			attack ();
+
+		if (transform.position.x < 13) {
+			Flip ();
+			Debug.Log("flipped");
+		}
 
 	}
 

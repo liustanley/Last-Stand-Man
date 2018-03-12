@@ -11,6 +11,7 @@ public class Zombie : Enemy {
 		speed = 20;
 
 		anim = GetComponent<Animator> ();
+
 	}
 
 	void Update () {
@@ -24,7 +25,11 @@ public class Zombie : Enemy {
 			move ();
 		else
 			attack ();
-
+		
+		if (transform.position.x > 13) {
+			Flip ();
+			Debug.Log("flipped");
+		}
 	}
 
 	public override void attack () {
