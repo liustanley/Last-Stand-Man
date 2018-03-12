@@ -107,11 +107,17 @@ public class Player : MonoBehaviour
 //				armScript.rotationOffset -= 180;
 			}
 		}
+
+		checkMouse ();
 	}
 
 	private void checkMouse () {
 		Vector3 mousePos = Input.mousePosition;
 
+		if (facingRight && Input.mousePosition.x < Screen.width / 2)
+			Flip ();
+		else if (!facingRight && Input.mousePosition.x > Screen.width / 2)
+			Flip ();
 
 	}
 
@@ -148,5 +154,7 @@ public class Player : MonoBehaviour
 		theScale = firePoint.localScale;
 		theScale.x *= -1;
 		firePoint.localScale = theScale;
+
+		firePoint.Rotate (0, 0, 180);
 	}
 } 
