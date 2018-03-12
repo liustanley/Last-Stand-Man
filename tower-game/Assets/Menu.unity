@@ -4706,11 +4706,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 10cd563c6063a470e811bfbbfed40ec0, type: 3}
-    m_FontSize: 150
+    m_FontSize: 170
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
-    m_MaxSize: 150
+    m_MinSize: 0
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -5675,6 +5675,7 @@ GameObject:
   - component: {fileID: 1866460249}
   - component: {fileID: 1866460248}
   - component: {fileID: 1866460247}
+  - component: {fileID: 1866460251}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5745,6 +5746,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1866460251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1866460246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585f17541cf524552940157962c30a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1918574992
 Prefab:
   m_ObjectHideFlags: 0
