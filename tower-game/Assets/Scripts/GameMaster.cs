@@ -73,6 +73,8 @@ public class GameMaster : MonoBehaviour {
 			if (pScript.gameOver) {
 				
 			} else {
+				yield return new WaitForSeconds (timeToSpawn + Random.Range (-0.5f, 0.5f) - (level));
+
 				Transform sp = spScript.spawnPoints [Random.Range (0, spScript.spawnPoints.Length - 1)];
 				if (Random.Range (0, 2) == 0)
 					Instantiate (Zombie, sp.position, sp.rotation);
@@ -80,7 +82,6 @@ public class GameMaster : MonoBehaviour {
 					Instantiate (Spoder, sp.position, sp.rotation);
 
 				Debug.Log ("Spawned enemy");
-				yield return new WaitForSeconds (timeToSpawn + Random.Range (-0.5f, 0.5f) - (level / 5));
 			}
 
 		}
