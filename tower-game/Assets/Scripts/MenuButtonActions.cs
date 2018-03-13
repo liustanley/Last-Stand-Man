@@ -8,6 +8,8 @@ public class MenuButtonActions : MonoBehaviour {
 
 	public GameObject mainMenu;
 	public GameObject optionsMenu;
+	public GameObject controlsMenu;
+	public GameObject credits;
 
 	public AudioMixer mixer;
 
@@ -38,10 +40,32 @@ public class MenuButtonActions : MonoBehaviour {
 		StartCoroutine (mainToOptions(waitTime));
 	}
 
+	public void mainToControlsButton(float waitTime)
+	{
+		StartCoroutine (mainToControl(waitTime));
+	}
+
+	public void mainToCreditsButton(float waitTime)
+	{
+		StartCoroutine (mainToCredits(waitTime));
+	}
+
 	public void optionsToMainButton(float waitTime)
 	{
 		StartCoroutine (optionsToMain(waitTime));
 	}
+
+	public void controlsToMainButton(float waitTime)
+	{
+		StartCoroutine (controlToMain(waitTime));
+	}
+
+	public void creditsToMainButton(float waitTime)
+	{
+		StartCoroutine (creditsToMain(waitTime));
+	}
+
+
 
 	public void quitGame(float waitTime)
 	{
@@ -93,10 +117,38 @@ public class MenuButtonActions : MonoBehaviour {
 		optionsMenu.SetActive (true);
 	}
 
+	private IEnumerator mainToControl(float waitTime)
+	{
+		yield return new WaitForSeconds (waitTime);
+		mainMenu.SetActive (false);
+		controlsMenu.SetActive (true);
+	}
+
+	private IEnumerator mainToCredits(float waitTime)
+	{
+		yield return new WaitForSeconds (waitTime);
+		mainMenu.SetActive (false);
+		credits.SetActive (true);
+	}
+
 	private IEnumerator optionsToMain(float waitTime)
 	{
 		yield return new WaitForSeconds (waitTime);
 		optionsMenu.SetActive (false);
+		mainMenu.SetActive (true);
+	}
+
+	private IEnumerator controlToMain(float waitTime)
+	{
+		yield return new WaitForSeconds (waitTime);
+		controlsMenu.SetActive (false);
+		mainMenu.SetActive (true);
+	}
+
+	private IEnumerator creditsToMain(float waitTime)
+	{
+		yield return new WaitForSeconds (waitTime);
+		credits.SetActive (false);
 		mainMenu.SetActive (true);
 	}
 
