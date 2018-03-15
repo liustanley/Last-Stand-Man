@@ -2385,7 +2385,7 @@ MonoBehaviour:
 
     you must fight off waves of zombies using your trusty revolver. If you run out
     of ammo, press R to reload. Use the mouse to aim and click to fire. It will be
-    dark, so use Z and X to rotate your flashlight and see the area aroudn you. and
+    dark, so use Z and X to rotate your flashlight and see the area around you. and
     remember:'
 --- !u!222 &788840275
 CanvasRenderer:

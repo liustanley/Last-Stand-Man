@@ -8015,7 +8015,7 @@ Prefab:
     - target: {fileID: 108673521817343102, guid: 65b720fd0215449adbbff6a4cdcdfdd0,
         type: 2}
       propertyPath: m_Range
-      value: 60
+      value: 55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 65b720fd0215449adbbff6a4cdcdfdd0, type: 2}
@@ -8375,6 +8375,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenu: {fileID: 1330173459}
   optionsMenu: {fileID: 1597459918}
+  controlsMenu: {fileID: 0}
+  credits: {fileID: 0}
   mixer: {fileID: 24100000, guid: 8fd3af09b726141a0a94e4e28bcfd3d1, type: 2}
 --- !u!114 &1179567974
 MonoBehaviour:
