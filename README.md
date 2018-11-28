@@ -1,6 +1,4 @@
-## Download Link
-[Click Here](https://drive.google.com/open?id=1OAyXI6G55loMdx7Q02JEOdpyZysOC0sy)
-
+## [Download Link](https://drive.google.com/open?id=1OAyXI6G55loMdx7Q02JEOdpyZysOC0sy)
 
 ## Instructions:
 
